@@ -14,6 +14,8 @@
 		97D70F672A3399A40084A86F /* AppReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F662A3399A40084A86F /* AppReducerTests.swift */; };
 		97D70F812A339A2A0084A86F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 97D70F802A339A2A0084A86F /* ComposableArchitecture */; };
 		97D70F832A339AA90084A86F /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F822A339AA90084A86F /* RecipeList.swift */; };
+		97D70F882A339E3A0084A86F /* DatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F872A339E3A0084A86F /* DatabaseClient.swift */; };
+		97D70F8A2A339E490084A86F /* DatabaseClient+live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F892A339E490084A86F /* DatabaseClient+live.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		97D70F622A3399A40084A86F /* RecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97D70F662A3399A40084A86F /* AppReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducerTests.swift; sourceTree = "<group>"; };
 		97D70F822A339AA90084A86F /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
+		97D70F872A339E3A0084A86F /* DatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClient.swift; sourceTree = "<group>"; };
+		97D70F892A339E490084A86F /* DatabaseClient+live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseClient+live.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +81,9 @@
 		97D70F542A3399A10084A86F /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				97D70F552A3399A10084A86F /* Main.swift */,
-				97D70F572A3399A10084A86F /* AppReducer.swift */,
-				97D70F822A339AA90084A86F /* RecipeList.swift */,
-				97D70F592A3399A40084A86F /* Assets.xcassets */,
-				97D70F5B2A3399A40084A86F /* Preview Content */,
+				97D70F852A339CFA0084A86F /* Dependencies */,
+				97D70F842A339CF50084A86F /* Features */,
+				97D70F8B2A33A53A0084A86F /* Resources */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -100,6 +102,42 @@
 				97D70F662A3399A40084A86F /* AppReducerTests.swift */,
 			);
 			path = RecipesTests;
+			sourceTree = "<group>";
+		};
+		97D70F842A339CF50084A86F /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				97D70F572A3399A10084A86F /* AppReducer.swift */,
+				97D70F822A339AA90084A86F /* RecipeList.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		97D70F852A339CFA0084A86F /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				97D70F862A339E310084A86F /* DatabaseClient */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		97D70F862A339E310084A86F /* DatabaseClient */ = {
+			isa = PBXGroup;
+			children = (
+				97D70F872A339E3A0084A86F /* DatabaseClient.swift */,
+				97D70F892A339E490084A86F /* DatabaseClient+live.swift */,
+			);
+			path = DatabaseClient;
+			sourceTree = "<group>";
+		};
+		97D70F8B2A33A53A0084A86F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97D70F552A3399A10084A86F /* Main.swift */,
+				97D70F592A3399A40084A86F /* Assets.xcassets */,
+				97D70F5B2A3399A40084A86F /* Preview Content */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +248,9 @@
 			files = (
 				97D70F582A3399A10084A86F /* AppReducer.swift in Sources */,
 				97D70F832A339AA90084A86F /* RecipeList.swift in Sources */,
+				97D70F8A2A339E490084A86F /* DatabaseClient+live.swift in Sources */,
 				97D70F562A3399A10084A86F /* Main.swift in Sources */,
+				97D70F882A339E3A0084A86F /* DatabaseClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Recipes/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Recipes/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ME637H7ZM9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -383,7 +423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Recipes/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Recipes/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = ME637H7ZM9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
