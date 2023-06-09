@@ -11,7 +11,7 @@ struct RecipeList: ReducerProtocol {
     case taskResponse(TaskResult<[DatabaseClient.Recipe]>)
     case addButtonTapped
     case deleteButtonTapped(id: DatabaseClient.Recipe.ID)
-    case deleteResponse(TaskResult<String>)
+    case deleteError(DatabaseClient.Failure)
     case destination(PresentationAction<Destination.Action>)
   }
   
@@ -41,14 +41,11 @@ struct RecipeList: ReducerProtocol {
         return .none
         
       case let .deleteButtonTapped(id: id):
-        return .task {
-          await .deleteResponse(TaskResult {
-            try await self.database.deleteRecipe(id)
-            return "Success"
-          })
+        return .run { _ in
+          try await self.database.deleteRecipe(id)
         }
         
-      case .destination, .deleteResponse, .taskResponse:
+      case .destination, .deleteError, .taskResponse:
         return .none
       }
     }

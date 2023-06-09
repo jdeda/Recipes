@@ -1,6 +1,18 @@
 import SwiftUI
 import ComposableArchitecture
 
+/*
+ 
+ 1. PresentationState - enum, single
+ 2. Navigation tools - NavigationDestination, Alert, Sheet
+ 3. AlertState - static (state.alert = .nameCannotBeEmpty)
+ 4. Dependencies - dismiss, uuid, database (custom)
+ 5. Actor - live dependency contains global mutable async state - emits @Published models as AsyncStream tied to view lifecycle
+ 6. FocusState - onAppear, onSubmit
+ */
+
+
+
 struct AppReducer: ReducerProtocol {
   struct State: Equatable {
     @PresentationState var destination: Destination.State?
