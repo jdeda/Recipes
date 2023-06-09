@@ -9,6 +9,7 @@ import ComposableArchitecture
  4. Dependencies - dismiss, uuid, database (custom)
  5. Actor - live dependency contains global mutable async state - emits @Published models as AsyncStream tied to view lifecycle
  6. FocusState - onAppear, onSubmit
+ 7. File Structure
  */
 
 
