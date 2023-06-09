@@ -4,14 +4,18 @@ import ComposableArchitecture
 struct RecipeList: ReducerProtocol {
   struct State: Equatable {
     var recipes = IdentifiedArrayOf<DatabaseClient.Recipe>()
+    @PresentationState var destination: Destination.State?
   }
   enum Action: Equatable {
     case task
     case taskResponse(TaskResult<[DatabaseClient.Recipe]>)
+    case addButtonTapped
     case deleteButtonTapped(id: DatabaseClient.Recipe.ID)
     case deleteResponse(TaskResult<String>)
+    case destination(PresentationAction<Destination.Action>)
   }
   
+  @Dependency(\.uuid) var uuid
   @Dependency(\.database) var database
   
   var body: some ReducerProtocolOf<Self> {
@@ -29,6 +33,13 @@ struct RecipeList: ReducerProtocol {
         state.recipes = .init(uniqueElements: value)
         return .none
         
+      case .addButtonTapped:
+        state.destination = .newRecipe(.init(recipe: .init(
+          id: self.uuid(),
+          name: ""
+        )))
+        return .none
+        
       case let .deleteButtonTapped(id: id):
         return .task {
           await .deleteResponse(TaskResult {
@@ -37,12 +48,25 @@ struct RecipeList: ReducerProtocol {
           })
         }
         
-      case .deleteResponse:
+      case .destination, .deleteResponse, .taskResponse:
         return .none
-      
-      case .taskResponse:
-        return .none
-        
+      }
+    }
+    .ifLet(\.$destination, action: /Action.destination) {
+      Destination()
+    }
+  }
+  
+  struct Destination: ReducerProtocol {
+    enum State: Equatable {
+      case newRecipe(NewRecipe.State)
+    }
+    enum Action: Equatable {
+      case newRecipe(NewRecipe.Action)
+    }
+    var body: some ReducerProtocolOf<Self> {
+      Scope(state: /State.newRecipe, action: /Action.newRecipe) {
+        NewRecipe()
       }
     }
   }
@@ -79,7 +103,23 @@ struct RecipeListView: View {
         }
       }
       .navigationTitle("Recipes")
+      .navigationBarTitleDisplayMode(.large)
       .task { await viewStore.send(.task).finish() }
+      .sheet(
+        store: store.scope(state: \.$destination, action: RecipeList.Action.destination),
+        state: /RecipeList.Destination.State.newRecipe,
+        action: RecipeList.Destination.Action.newRecipe,
+        content: NewRecipeView.init(store:)
+      )
+      .toolbar {
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+          Button {
+            viewStore.send(.addButtonTapped)
+          } label: {
+            Image(systemName: "plus")
+          }
+        }
+      }
     }
   }
 }

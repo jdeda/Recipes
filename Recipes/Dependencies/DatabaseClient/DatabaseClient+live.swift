@@ -22,6 +22,10 @@ extension DatabaseClient {
         .init(id: UUID(), name: "Fish Tacos")
       ])
       
+      func add(recipe: Recipe) {
+        self.recipes.append(recipe)
+      }
+      
       func remove(recipe id: Recipe.ID) {
         self.recipes.remove(id: id)
       }
@@ -42,8 +46,11 @@ extension DatabaseClient {
           continuation.onTermination = { _ in task.cancel() }
         }
       },
+      addRecipe: { recipe in
+        await actor.add(recipe: recipe)
+      },
       deleteRecipe: { id in
-        try await actor.remove(recipe: id)
+        await actor.remove(recipe: id)
       }
     )
   }

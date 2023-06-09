@@ -16,6 +16,7 @@
 		97D70F832A339AA90084A86F /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F822A339AA90084A86F /* RecipeList.swift */; };
 		97D70F882A339E3A0084A86F /* DatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F872A339E3A0084A86F /* DatabaseClient.swift */; };
 		97D70F8A2A339E490084A86F /* DatabaseClient+live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F892A339E490084A86F /* DatabaseClient+live.swift */; };
+		97D70F8D2A33BC290084A86F /* NewRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D70F8C2A33BC290084A86F /* NewRecipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		97D70F822A339AA90084A86F /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
 		97D70F872A339E3A0084A86F /* DatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClient.swift; sourceTree = "<group>"; };
 		97D70F892A339E490084A86F /* DatabaseClient+live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseClient+live.swift"; sourceTree = "<group>"; };
+		97D70F8C2A33BC290084A86F /* NewRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				97D70F572A3399A10084A86F /* AppReducer.swift */,
+				97D70F8C2A33BC290084A86F /* NewRecipe.swift */,
 				97D70F822A339AA90084A86F /* RecipeList.swift */,
 			);
 			path = Features;
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97D70F8D2A33BC290084A86F /* NewRecipe.swift in Sources */,
 				97D70F582A3399A10084A86F /* AppReducer.swift in Sources */,
 				97D70F832A339AA90084A86F /* RecipeList.swift in Sources */,
 				97D70F8A2A339E490084A86F /* DatabaseClient+live.swift in Sources */,

@@ -3,11 +3,14 @@ import Dependencies
 
 struct DatabaseClient {
   var getRecipes: @Sendable () -> AsyncStream<[Recipe]>
+  var addRecipe: @Sendable (Recipe) async -> Void
   var deleteRecipe: @Sendable (Recipe.ID) async throws -> Void
+  
+  struct Failure: Equatable, Error {}
   
   struct Recipe: Identifiable, Equatable, Codable {
     let id: UUID
-    let name: String
+    var name: String
   }
 }
 
